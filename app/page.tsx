@@ -1,101 +1,74 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Brain, Shield, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { DisclaimerBanner } from "@/components/medlens/DisclaimerBanner";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex flex-col gap-10 sm:gap-12">
+      <section className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:gap-12">
+        <div className="space-y-6 sm:space-y-8">
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/25 bg-gradient-to-r from-cyan-500/15 via-teal-500/10 to-transparent px-4 py-2 text-xs font-semibold uppercase tracking-widest text-cyan-200/95 shadow-glow-sm">
+            <Sparkles className="h-3.5 w-3.5 shrink-0 text-cyan-300" />
+            Triage-grade interface
+          </div>
+          <h1 className="text-balance text-3xl font-semibold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.25rem]">
+            <span className="text-gradient-display">Understand symptoms.</span>{" "}
+            <span className="text-gradient-accent">Assess urgency.</span>{" "}
+            <span className="text-slate-400">Know your next step.</span>
+          </h1>
+          <p className="max-w-xl text-pretty text-base leading-relaxed text-slate-400 sm:text-lg">
+            Structured AI reasoning, deterministic safety rules, interactive anatomy, and vision triage — in one premium
+            clinical shell. Educational only; not a diagnosis.
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link href="/symptoms" className="w-full sm:w-auto">
+              <Button className="w-full gap-2 sm:w-auto">
+                Start symptom triage <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="/scan" className="w-full sm:w-auto">
+              <Button variant="secondary" className="w-full gap-2 sm:w-auto">
+                Visual injury scan
+              </Button>
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <Card className="relative overflow-hidden">
+          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-teal-600/15 blur-3xl" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_0%,rgba(34,211,238,0.12),transparent_50%)]" />
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-xl font-semibold tracking-tight">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/15 text-cyan-200 shadow-inner-soft">
+                <Brain className="h-5 w-5" />
+              </span>
+              Built to impress — and protect
+            </CardTitle>
+            <CardDescription className="text-slate-400">
+              Serious safety story with a cinematic, startup-grade interface.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-5 text-sm leading-relaxed text-slate-300">
+            <div className="flex gap-4 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
+              <Shield className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" />
+              <p>
+                <span className="font-medium text-white">Rule engine first.</span> Red-flag logic caps outcomes — the model
+                cannot downgrade a true emergency pattern.
+              </p>
+            </div>
+            <div className="flex gap-4 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
+              <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-teal-400" />
+              <p>
+                JSON contracts for vision + symptoms, doctor-ready exports, and a UI tuned for{" "}
+                <span className="text-slate-200">demo day and real pilots</span>.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+      <DisclaimerBanner />
     </div>
   );
 }
